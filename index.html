@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>City National Bank Login - Replica</title>
+    <style>
+        :root {
+            --blue: #0056A4;
+            --light-gray: #f5f5f5;
+            --muted: #777;
+            --border: #dcdcdc;
+            --accent: #0b5fb8;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            color: #333;
+            background: white;
+        }
+
+        .notice {
+            /* margin: auto 100px; */
+            background: #fff;
+            border-bottom: 4px solid var(--blue);
+            padding: 18px 20px;
+            font-size: 15px;
+            line-height: 1.45;
+        }
+
+        .notice p {
+            /* margin: 8px 0 0 0; */
+            color: #4a4a4a;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .notice strong,
+        p {
+            margin: auto 350px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            display: flex;
+            gap: 40px;
+            padding: 0 16px;
+        }
+
+        .services {
+            width: 320px;
+            background: #fafafa;
+            padding: 26px;
+            border-right: 1px solid #eee;
+        }
+
+        .services h3 {
+            font-size: 15px;
+            color: #666;
+            letter-spacing: 0.6px;
+            margin: 0 0 12px 0;
+        }
+
+        .services a {
+            display: block;
+            color: #606060;
+            text-decoration: none;
+            margin: 8px 0;
+            font-size: 13px;
+        }
+
+        .signin {
+            flex: 1;
+            padding: 10px 30px;
+        }
+
+        .signin h2 {
+            color: var(--blue);
+            font-size: 26px;
+            margin: 8px 0 18px 0;
+            letter-spacing: 1px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 24px;
+            border-bottom: 2px solid #e6e6e6;
+            padding-bottom: 10px;
+            margin-bottom: 18px;
+        }
+
+        .tab {
+            padding: 8px 4px;
+            color: #6b6b6b;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: default;
+            cursor: pointer;
+        }
+
+        .tab.active {
+            color: var(--blue);
+            border-bottom: 3px solid var(--blue);
+            padding-bottom: 5px;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 14px;
+            border: 1px solid var(--border);
+            background: #fff;
+            box-sizing: border-box;
+            border-radius: 2px;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            width: 160px;
+            padding: 12px;
+            background: #d6d6d6;
+            border: 1px solid #bfbfbf;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 2px;
+            text-transform: uppercase;
+        }
+
+        .password-wrapper {
+            position: relative;
+        }
+
+        .toggle-eye {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 18px;
+            color: var(--muted);
+            user-select: none;
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 12px 0;
+        }
+
+        .signin button {
+            width: 160px;
+            padding: 12px;
+            background: #d6d6d6;
+            border: 1px solid #bfbfbf;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+
+        .links a {
+            color: var(--blue);
+            text-decoration: none;
+            display: block;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .enroll {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 10px 18px;
+            border: 2px solid var(--blue);
+            color: var(--blue);
+            font-weight: 700;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        footer {
+            margin-top: 40px;
+            background: var(--light-gray);
+            padding: 30px 16px;
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+
+        .footer-col {
+            min-width: 160px;
+        }
+
+        .footer-col strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: #444;
+        }
+
+        .footer-col a {
+            display: block;
+            margin: 6px 0;
+            color: var(--blue);
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .apps img {
+            display: block;
+            width: 140px;
+            margin-bottom: 8px;
+        }
+
+        .disclaimer-box {
+            max-width: 1100px;
+            margin: 28px auto 0;
+            border: 1px solid #bbb;
+            padding: 12px;
+            text-align: center;
+            font-size: 23px;
+            background: white;
+        }
+
+        .bottom-bar {
+            background: var(--blue);
+            color: white;
+            padding: 12px 0;
+            text-align: center;
+            margin-top: 18px;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media(max-width:900px) {
+            .container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .services {
+                width: 100%;
+                border-right: none;
+                padding: 18px;
+            }
+
+            .signin {
+                padding: 10px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="notice">
+        <strong>City National Bank will never initiate a call or text to request your verification codes or
+            passwords.</strong>
+        <p>
+            Financial institutions have seen an increase in spoofed texts and calls – scammers disguise the true source
+            of a text or call, making it appear to be from a trusted source (such as your bank). Protect yourself from
+            scammers seeking your account information by never sharing your sensitive information, such as your password
+            or authorization code with outside callers.
+        </p>
+    </div>
+    <div class="container">
+        <aside class="services" aria-label="All online services">
+            <h3>ALL ONLINE SERVICES</h3>
+            <a href="#">Book2Bank</a>
+            <a href="#">City National Card Alerts</a>
+            <a href="#">City National Rewards</a>
+            <a href="#">City Tax</a>
+            <a href="#">CNB DX</a>
+            <a href="#">Commercial AP</a>
+            <a href="#">Commercial Card Online</a>
+            <a href="#">Controlled Disbursement</a>
+            <a href="#">Donor Advised Fund</a>
+            <a href="#">EASI Link</a>
+            <a href="#">International Banking Online</a>
+            <a href="#">International Banking Online (FX)</a>
+            <a href="#">Remit Advantage</a>
+            <a href="#">Remote Check Express</a>
+            <a href="#">StuckyNet-Link</a>
+            <a href="#">Wholesale Lockbox</a>
+        </aside>
+        <main class="signin" aria-label="Sign in form">
+            <h2>SIGN IN TO</h2>
+            <div class="tabs" role="tablist" aria-label="Login tabs">
+                <div class="tab active" role="tab">City National Online</div>
+                <div class="tab" role="tab">Business Suite</div>
+                <div class="tab" role="tab">Business Essentials</div>
+            </div>
+            <label for="userid">User ID</label>
+            <input id="userid" type="text" placeholder="" name="user">
+            <label for="password">Password</label>
+            <div class="password-wrapper">
+                <input id="password" type="password" aria-describedby="toggle" name="pass" />
+                <span id="toggle" class="toggle-eye" role="button" aria-label="Show password"
+                    onclick="togglePassword()">
+                    <svg width="22" height="14" viewBox="0 0 24 14" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true">
+                        <path d="M1 7C1 7 5 1 12 1s11 6 11 6-4 6-11 6S1 7 1 7z" stroke="#777" stroke-width="1.2"
+                            fill="none" />
+                        <circle cx="12" cy="7" r="2.2" stroke="#777" stroke-width="1.2" fill="none" />
+                    </svg>
+                </span>
+            </div>
+            <div class="checkbox-row">
+                <input id="remember" type="checkbox" />
+                <label for="remember" style="font-weight:500;">Remember my User ID</label>
+            </div>
+            <div style="margin:12px 0;">
+                <input type="submit" value="SIGN In" name="submit">
+            </div>
+            <div class="links">
+                <a href="#">Forgot User ID?</a>
+                <a href="#">Forgot Password?</a>
+            </div>
+            <a href="#" class="enroll">ENROLL NOW</a>
+        </main>
+    </div>
+    <div class="disclaimer-box">
+        Non-Deposit Investment Products: • Are Not FDIC Insured • Are Not Bank Guaranteed • <br> May Lose Value
+    </div>
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-col">
+                <strong>ABOUT US</strong>
+                <a href="#">Our History</a>
+                <a href="#">Our Leadership</a>
+                <a href="#">Financials</a>
+                <a href="#">Locations</a>
+                <a href="#">Careers</a>
+            </div>
+            <div class="footer-col">
+                <strong>LEGAL</strong>
+                <a href="#">Privacy & Security</a>
+                <a href="#">Fraud Prevention</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Accessibility</a>
+                <a href="#">Cookie Settings</a>
+            </div>
+            <div class="footer-col">
+                <strong>NEWS & INSIGHTS</strong>
+                <a href="#">In The News</a>
+                <a href="#">Press Releases</a>
+            </div>
+            <div class="footer-col">
+                <strong>SOLUTIONS</strong>
+                <a href="#">City National Bank App</a>
+                <a href="#">Personal Banking</a>
+                <a href="#">Business Banking</a>
+                <a href="#">Private Banking</a>
+            </div>
+            <div class="footer-col apps" aria-hidden="true">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/App_Store_%28iOS%29.svg"
+                    alt="App Store badge" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                    alt="Google Play badge" />
+            </div>
+        </div>
+        <div style="max-width:1100px;margin:18px auto 0;font-size:13px;color:#444;">
+            <p style="margin:0 0 8px 0;">Deposit products and services are provided by City National Bank Member FDIC.
+            </p>
+            <p style="margin:0 0 8px 0;">City National Bank does business in the state of Florida as CN Bank.</p>
+        </div>
+        <div class="bottom-bar">©2025 City National Bank. All Rights Reserved.</div>
+    </footer>
+    <script>
+        function togglePassword() {
+            const p = document.getElementById('password');
+            const btn = document.getElementById('toggle');
+            if (p.type === 'password') {
+                p.type = 'text';
+                btn.setAttribute('aria-label', 'Hide password');
+            } else {
+                p.type = 'password';
+                btn.setAttribute('aria-label', 'Show password');
+            }
+        }
+    </script>
+</body>
+
+</html>
